@@ -9,10 +9,15 @@ const conn = mysql.createPool({
 	waitForConnections: true
 });
 const sqlExec = async (sql, sqlVals) => {
-	const connect = await conn.getConnection();
-	const result = await connect.query(sql, sqlVals);
-	connect.release();
-	return result;
+	try {
+		const connect = await conn.getConnection();
+		const result = await connect.query(sql, sqlVals);
+		connect.release();
+		return result;
+	}
+	catch(error) {
+		console.log(error);
+	}
 }
 
 module.exports = {mysql, conn, sqlExec};

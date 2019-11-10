@@ -12,22 +12,22 @@ block content
 		h2 Update
 		form.form-inline(action="/rest" method="post")
 			input(type="hidden" name="_method" value="put")
-			input.form-control(type="text" name="username")
+			input(type="hidden" id="id" name="id" value="")
+			input#username.form-control(type="text" name="username")
 			button.btn.btn-primary.ml-2 전송
-	.border.my-3.p-3
-		h2 Delete
-		form.form-inline(action="/rest" method="post")
-			input(type="hidden" name="_method" value="delete")
-			input.form-control(type="text" name="username")
-			button.btn.btn-primary.ml-2 전송
+	form#revForm(method="post" action="/rest")
+		input(type="hidden" name="_method" value="delete")
+		input(type="hidden" name="id" id="rev-id" value="")
 	.border.my-3.p-3
 		h2 Read
 		div.border.d-flex.flex-wrap
 			each item in datas
 				div.p-2.d-flex.align-items-center.rounded.border.m-2
-					span.mr-2= item.id
-					span.mr-3= item.username
+					span.mr-2.user-id= item.id
+					span.mr-3.user-name= item.username
 					div
-						button.btn.btn-success.btn-sm 수정
-						button.btn.btn-danger.btn-sm 삭제
+						button.btn.btn-success.btn-sm(onclick="chgData(this);") 수정
+						button.btn.btn-danger.btn-sm(onclick="revData(this);") 삭제
+block script
+	script(src="/js/script.js")
 
