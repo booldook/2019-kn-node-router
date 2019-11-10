@@ -51,6 +51,8 @@ app.use(methodOverride(function (req, res) {
 const boardRouter = require(path.join(__dirname,"router/board"));
 const adminRouter = require(path.join(__dirname,"router/admin"));
 const restRouter = require(path.join(__dirname,"router/rest"));
+const apiRouter = require(path.join(__dirname,"router/api"));
 app.use("/board", boardRouter);
 app.use("/admin", adminRouter);
 app.use("/rest", restRouter);
+app.use("/api", apiRouter);
