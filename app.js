@@ -1,9 +1,15 @@
+/* Node, Express */
 const express = require("express");
 const app = express();
 const path = require("path");
+const fs = require("fs");
+const log = console.log;
+
+/* node_modules */
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
-const log = console.log;
+const morgan = require("morgan");
+const rfs = require('rotating-file-stream');
 app.listen(3000, () => {
 	log("http://127.0.0.1:3000");
 });
@@ -18,6 +24,15 @@ app.use(bodyParser.urlencoded({}));
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 app.locals.pretty = true;
+
+/* Morgan 셋팅 */
+const logDirectory = path.join(__dirname, 'log');
+fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
+var accessLogStream = rfs('access.log', {
+  interval: '1d',
+  path: logDirectory
+});
+app.use(morgan('combined', { stream: accessLogStream }));
 
 /* Method-Override 셋팅 */
 app.use(methodOverride('X-HTTP-Method'));
