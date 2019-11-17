@@ -16,7 +16,7 @@ const sqlExec = async (sql, sqlVals) => {
 		return result;
 	}
 	catch(error) {
-		console.log(error);
+		throw new Error(error);
 	}
 }
 

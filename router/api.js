@@ -18,7 +18,7 @@ router.post("/", (req, res, next) => {
 		let sql = "INSERT INTO rest SET username=?, wdate=?";
 		let sqlVals = [username, new Date()];
 		let result = await sqlExec(sql, sqlVals);
-		res.json(result[0]);
+		res.json(result);
 	})();
 });
 
@@ -27,15 +27,17 @@ router.put("/", (req, res, next) => {
 		let sql = "UPDATE rest SET username=? WHERE id=?";
 		let sqlVals = [req.body.username, req.body.id];
 		let result = await sqlExec(sql, sqlVals);
-		res.json(result[0]);
+		res.json(result);
 	})();
 });
 
 router.delete("/", (req, res, next) => {
+	console.log(req.body.id);
+	res.json();
 	(async () => {
 		let sql = "DELETE FROM rest WHERE id="+req.body.id;
 		let result = await sqlExec(sql);
-		res.json(result[0]);
+		res.json(result);
 	})();
 });
 

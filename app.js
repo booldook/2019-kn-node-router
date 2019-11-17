@@ -21,7 +21,8 @@ log(path.join(__dirname, "public"));
 
 /* Express 셋팅 */
 app.use("/", express.static(path.join(__dirname, "public")));
-app.use(bodyParser.urlencoded({}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 app.locals.pretty = true;
