@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko"></html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <title>RESTFul-Ajax</title>
+</head>
+<body>
+  <div class="container">
+    <div class="jumbotron my-3">
+      <h1>RESTFul-AJAX-Sequelize 테스트</h1>
+    </div>
+    <div class="border my-3 p-3">
+      <h2>Create</h2>
+      <form class="form-inline">
+        <input class="form-control" type="text" name="username">
+        <button type="button" class="btn btn-primary ml-2" onclick="sendData(this.form);">전송</button>
+      </form>
+    </div>
+    <div class="border my-3 p-3">
+      <h2>Update</h2>
+      <form class="form-inline" name="upForm">
+        <input type="hidden" id="id" name="id" value="">
+        <input class="form-control" id="username" type="text" name="username">
+        <button type="button" class="btn btn-primary ml-2" onclick="putData(this.form);">전송</button>
+      </form>
+    </div>
+    <div class="border my-3 p-3">
+      <h2>Read</h2>
+      <div class="border d-flex flex-wrap list-wrap">
+        <!--  -->
+      </div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/js/script-ajax-seq.js"></script>
+</body>
+</html>
