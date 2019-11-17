@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const fs = require("fs");
+const httpErrors = require("http-errors");
 const log = console.log;
 
 /* node_modules */
@@ -56,3 +57,15 @@ app.use("/board", boardRouter);
 app.use("/admin", adminRouter);
 app.use("/rest", restRouter);
 app.use("/api", apiRouter);
+
+
+/* 예외처리 */
+app.use((req, res, next) => {
+  next(httpErrors(404));
+});
+
+app.use((error, req, res, next) => {
+  res.locals.message = error.message;
+  res.locals.error = error;
+  res.render("error");
+});

@@ -1,4 +1,3 @@
-
 var xhr = new XMLHttpRequest();
 function getData() {
  	xhr.open("get", "/api");

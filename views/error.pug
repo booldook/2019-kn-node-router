@@ -1,0 +1,5 @@
+extends ./layout/default-layout.pug
+block title
+	h1.text-center.p-5= message + ' / ' + error.status
+block content
+	p= error.stack
